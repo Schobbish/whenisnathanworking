@@ -1,5 +1,6 @@
 #!/bin/bash
 # downloads calendars and exports as json
+# this script should be silent so that it can be run without fowarding to /dev/null
 
 cd "$(dirname "$0")"
 

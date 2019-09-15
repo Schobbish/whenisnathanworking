@@ -25,14 +25,16 @@ fs.readFile('config.json', function(err, data) {
 
             // add shifts to the calendars
             for (const event of origJSON.VCALENDAR[0].VEVENT) {
-                const uid = event.UID.split('@')[0];
-                publicCal[uid] = {
-                    "startDate": correctDateFmt(event.DTSTART),
+                // hopefully they won't give me two shifts with the same startDate
+                // can't use UID as keys because they're out of order for some reason
+                const startDate = correctDateFmt(event.DTSTART);
+                publicCal[startDate] = {
+                    "uid": event.UID.split('@')[0],
                     "endDate": correctDateFmt(event.DTEND),
                     "job": event.SUMMARY.split(' · ')[1]
                 };
-                privateCal[uid] = {
-                    "startDate": correctDateFmt(event.DTSTART),
+                privateCal[startDate] = {
+                    "uid": event.UID.split('@')[0],
                     "endDate": correctDateFmt(event.DTEND),
                     "job": event.SUMMARY.split(' · ')[1] + ': ' + event.SUMMARY.split(' · ')[2]
                 };

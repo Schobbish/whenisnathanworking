@@ -1,10 +1,10 @@
 function generateCalendar(shifts) {
-    for (const uid in shifts) {
-        if (uid === 'timestamp') {
+    for (const startDate in shifts) {
+        if (startDate === 'timestamp') {
             break;
         }
-        $('#cal').append(`<div class="shift" id="${uid}">
-    ${(new Date(shifts[uid].startDate)).toDateString()} ${shifts[uid].job}
+        $('#cal').append(`<div class="shift" id="${shifts[startDate].uid}">
+    ${(new Date(startDate)).toDateString()} ${shifts[startDate].job}
 </div>`);
     }
     // set timestamp
