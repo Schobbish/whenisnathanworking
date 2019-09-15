@@ -14,7 +14,6 @@ function generateCalendar(shifts) {
 
 $(document).ready(function() {
     $.ajaxSetup({ cache: false });
-    let public = false;
     // get config file for list of calendars
     $.getJSON('config.json').done(function(config) {
         for (const cal of config.cals) {
@@ -26,7 +25,6 @@ $(document).ready(function() {
             }).fail(function() {
                 // since we fall back on the public files
                 console.log('Ignore that 404 error it\'s expected');
-                public = true;
                 $.getJSON(`cals_pub/${cal}.json`).done(function(shifts) {
                     generateCalendar(shifts);
                 });
