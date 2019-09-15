@@ -8,7 +8,8 @@ function generateCalendar(shifts) {
 </div>`);
     }
     // set timestamp
-    $('#timestamp').text(shifts.timestamp);
+    const timestamp = new Date(shifts.timestamp);
+    $('#timestamp').text(`${timestamp.toDateString()} ${timestamp.toLocaleTimeString()}`);
 }
 
 $(document).ready(function() {
