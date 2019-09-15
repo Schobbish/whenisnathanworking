@@ -1,0 +1,22 @@
+{
+  "name": "whenisnathanworking",
+  "version": "1.0.0",
+  "description": "Website to show when Nathan is working",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Schobbish/whenisnathanworking.git"
+  },
+  "author": "Nathaniel Adam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Schobbish/whenisnathanworking/issues"
+  },
+  "homepage": "https://github.com/Schobbish/whenisnathanworking#readme",
+  "dependencies": {
+    "ical2json": "^2.0.0"
+  }
+}
