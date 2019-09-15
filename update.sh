@@ -3,12 +3,6 @@
 
 cd "$(dirname "$0")"
 
-# check for ical2json
-if ! [[ -a $(which ical2json) ]]; then
-    echo "Error: ical2json not found. Run \`npm install -g ical2json\` to install it."
-    exit 1
-fi
-
 # create cal directory if not already present even though it's probably there
 if ! [[ -d ./cals/ ]]; then
     mkdir ./cals
@@ -21,11 +15,11 @@ if [[ -a $(which curl) ]]; then
         exit 1
     fi
     for url in cals/*.url; do
-        echo "Downloading ${url%.*}.ics"
+        # echo "Downloading ${url%.*}.ics"      # so I don't need > /dev/null
         curl -o "${url%.*}.ics" -s $(cat $url)
-        ical2json "${url%.*}.ics"
     done
 else
     echo "Error: sorry but you need curl for this one."
     exit 1
 fi
+node assets/js/convert.js
