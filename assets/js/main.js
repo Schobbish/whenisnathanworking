@@ -13,6 +13,7 @@ function generateCalendar(shifts) {
 }
 
 $(document).ready(function() {
+    $.ajaxSetup({ cache: false });
     let public = false;
     // get config file for list of calendars
     $.getJSON('config.json').done(function(config) {
