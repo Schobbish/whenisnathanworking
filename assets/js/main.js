@@ -4,14 +4,16 @@ $(document).ready(function() {
             // right now there's only going to be one calendar though
             $.getJSON(`cals/${calendar}.json`).done(function(cal) {
                 for (var event of cal.VCALENDAR[0].VEVENT) {
-                    $('#cal').append(`<div class="shift" id="${event.UID}"></div>`);
-                    $(`#${event.UID}`).append(`<p class="job">${event.SUMMARY}</p>`);
+                    const uid = event.UID.split('@')[0];
+                    $('#cal').append(`<div class="shift" id="${uid}"></div>`);
+                    $(`#${uid}`).append(`<p class="job">${event.SUMMARY}</p>`);
 
+                    // dates are invalid because they must be in the extended format, not basic
                     const startTime = new Date(event.DTSTART);
-                    $(`#${event.UID}`).append(`<p class="start">${startTime.toDateString} ${startTime.toLocaleTimeString}</p>`);
+                    $(`#${uid}`).append(`<p class="start">${startTime.toDateString()} ${startTime.toLocaleTimeString()}</p>`);
 
                     const endTime = new Date(event.DTEND);
-                    $(`#${event.UID}`).append(`<p class="end">${endTime.toDateString} ${endTime.toLocaleTimeString}</p>`);
+                    $(`#${uid}`).append(`<p class="end">${endTime.toDateString()} ${endTime.toLocaleTimeString()}</p>`);
                 }
 
             });
