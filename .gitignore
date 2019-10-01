@@ -63,3 +63,7 @@ typings/
 # ignore saved calendars because sensitive
 cals/
 urls/
+
+# ignore my shell scripts because not useful
+whenisnathanworking
+winw
