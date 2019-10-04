@@ -10,7 +10,7 @@ fs.readFile('config.json', function(err, data) {
 
     for (const file of config.cals) {
         // get each .ics specified in config.cals
-        fs.readFile(`cals_pub/${file}.json`, 'utf-8', function(err, rawJSON) {
+        fs.readFile(`cals/${file}.json`, 'utf-8', function(err, rawJSON) {
             if (err) throw err;
 
             // header
