@@ -27,6 +27,7 @@ fs.readFile('config.json', function(err, data) {
             for (const event of origJSON.VCALENDAR[0].VEVENT) {
                 // hopefully they won't give me two shifts with the same startDate
                 // can't use UID as keys because they're out of order for some reason
+                console.log(event);
                 const startDate = correctDateFmt(event.DTSTART);
                 publicCal[startDate] = {
                     "uid": event.UID.split('@')[0],
