@@ -27,16 +27,15 @@ fs.readFile('config.json', function(err, data) {
             for (const event of origJSON.VCALENDAR[0].VEVENT) {
                 // hopefully they won't give me two shifts with the same startDate
                 // can't use UID as keys because they're out of order for some reason
-                console.log(event);
-                const startDate = correctDateFmt(event.DTSTART);
+                const startDate = correctDateFmt(event["DTSTART;TZID=America/Los_Angeles"]);
                 publicCal[startDate] = {
                     "uid": event.UID.split('@')[0],
-                    "endDate": correctDateFmt(event.DTEND),
+                    "endDate": correctDateFmt(event["DTEND;TZID=America/Los_Angeles"]),
                     "job": event.SUMMARY.split(' · ')[1]
                 };
                 privateCal[startDate] = {
                     "uid": event.UID.split('@')[0],
-                    "endDate": correctDateFmt(event.DTEND),
+                    "endDate": correctDateFmt(event["DTEND;TZID=America/Los_Angeles"]),
                     "job": event.SUMMARY.split(' · ')[1] + ': ' + event.SUMMARY.split(' · ')[2]
                 };
             }
