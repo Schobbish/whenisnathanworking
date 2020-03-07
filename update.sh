@@ -23,4 +23,4 @@ else
     echo "Error: sorry but you need curl for this one."
     exit 1
 fi
-node assets/js/convert.js
+node assets/convert.js
