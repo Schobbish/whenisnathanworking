@@ -20,6 +20,7 @@ fs.readFile('config.json', function(err, data) {
             if (err) throw err;
 
             const origJSON = ical2json.convert(icaldata);
+            console.log(origJSON)
             let publicCal = {};
             let privateCal = {};
 
