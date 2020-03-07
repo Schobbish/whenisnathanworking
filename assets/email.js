@@ -21,7 +21,10 @@ fs.readFile('config.json', function(err, data) {
                 if (startDate === 'timestamp') {
                     break;
                 }
-                console.log(`${(new Date(startDate)).toDateString()} ${shifts[startDate].job}`);
+                // only if the startDate is in the future
+                if (new Date(startDate) > new Date()) {
+                    console.log(`${(new Date(startDate)).toDateString()} ${shifts[startDate].job}`);
+                }
             }
 
             // footer

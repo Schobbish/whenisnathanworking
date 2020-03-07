@@ -3,9 +3,12 @@ function generateCalendar(shifts) {
         if (startDate === 'timestamp') {
             break;
         }
-        $('#cal').append(`<div class="shift" id="${shifts[startDate].uid}">
+        // only if startDate is in the future
+        if (new Date(startDate) > new Date()) {
+            $('#cal').append(`<div class="shift" id="${shifts[startDate].uid}">
     ${(new Date(startDate)).toDateString()} ${shifts[startDate].job}
 </div>`);
+        }
     }
     // set timestamp
     const timestamp = new Date(shifts.timestamp);
